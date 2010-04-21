@@ -160,6 +160,9 @@ Usage:  ota_from_target_files [flags] input_target_files output_ota_package
   --backup <boolean>
       Enable or disable the execution of backuptool.sh.
       Disabled by default.
+
+  --override_device <device>
+      Override device-specific asserts. Can be a comma-separated list.
 """
 
 from __future__ import print_function
@@ -212,6 +215,7 @@ OPTIONS.extracted_input = None
 OPTIONS.key_passwords = []
 OPTIONS.skip_postinstall = False
 OPTIONS.backuptool = False
+OPTIONS.override_device = 'auto'
 
 METADATA_NAME = 'META-INF/com/android/metadata'
 POSTINSTALL_CONFIG = 'META/postinstall_config.txt'
@@ -267,7 +271,10 @@ class BuildInfo(object):
       assert oem_dicts, "OEM source required for this build"
 
     # These two should be computed only after setting self._oem_props.
-    self._device = self.GetOemProperty("ro.product.device")
+    if OPTIONS.override_device == "auto":
+      self._device = self.GetOemProperty("ro.product.device")
+    else:
+      self._device = OPTIONS.override_device
     self._fingerprint = self.CalculateFingerprint()
 
   @property
@@ -1871,6 +1878,8 @@ def main(argv):
       OPTIONS.skip_postinstall = True
     elif o in ("--backup"):
       OPTIONS.backuptool = bool(a.lower() == 'true')
+    elif o in ("--override_device"):
+      OPTIONS.override_device = a
     else:
       return False
     return True
@@ -1902,6 +1911,7 @@ def main(argv):
                                  "extracted_input_target_files=",
                                  "skip_postinstall",
                                  "backup=",
+                                 "override_device=",
                              ], extra_option_handler=option_handler)
 
   if len(args) != 2:
@@ -1944,6 +1954,9 @@ def main(argv):
 
   # Load OEM dicts if provided.
   OPTIONS.oem_dicts = _LoadOemDicts(OPTIONS.oem_source)
+
+  if "ota_override_device" in OPTIONS.info_dict:
+    OPTIONS.override_device = OPTIONS.info_dict.get("ota_override_device")
 
   ab_update = OPTIONS.info_dict.get("ab_update") == "true"
 
