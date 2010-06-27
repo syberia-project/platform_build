@@ -130,6 +130,7 @@ _product_var_list += PRODUCT_BRAND
 # These PRODUCT_SYSTEM_* flags, if defined, are used in place of the
 # corresponding PRODUCT_* flags for the sysprops on /system.
 _product_var_list += \
+    PRODUCT_BUILD_PROP_OVERRIDES \
     PRODUCT_SYSTEM_NAME \
     PRODUCT_SYSTEM_MODEL \
     PRODUCT_SYSTEM_DEVICE \
