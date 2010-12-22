@@ -270,6 +270,7 @@ OPTIONS.output_metadata_path = None
 OPTIONS.disable_fec_computation = False
 OPTIONS.force_non_ab = False
 OPTIONS.boot_variable_file = None
+OPTIONS.backuptool = False
 
 OPTIONS.backuptool = True
 
@@ -837,6 +838,11 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   if OPTIONS.backuptool:
     script.RunBackup("backup", sysmount)
 
+  if OPTIONS.backuptool:
+    script.Mount("/system")
+    script.RunBackup("backup")
+    script.Unmount("/system")
+
   # All other partitions as well as the data wipe use 10% of the progress, and
   # the update of the system partition takes the remaining progress.
   system_progress = 0.9 - (len(block_diff_dict) - 1) * 0.1
@@ -871,6 +877,12 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   if OPTIONS.backuptool:
     script.ShowProgress(0.02, 10)
     script.RunBackup("restore", sysmount)
+
+  if OPTIONS.backuptool:
+    script.ShowProgress(0.02, 10)
+    script.Mount("/system")
+    script.RunBackup("restore")
+    script.Unmount("/system")
 
   script.WriteRawImage("/boot", "boot.img")
 
