@@ -40,6 +40,12 @@ EOF
 
 cat <<EOF
 
+EOF
+
+    __print_syberia_functions_help
+
+cat <<EOF
+
 Environment options:
 - SANITIZE_HOST: Set to 'true' to use ASAN for all host modules. Note that
                  ASAN_OPTIONS=detect_leaks=0 will be set by default until the
