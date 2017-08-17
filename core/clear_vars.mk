@@ -474,6 +474,9 @@ LOCAL_CUSTOM_BUILD_STEP_INPUT:=
 LOCAL_CUSTOM_BUILD_STEP_OUTPUT:=
 LOCAL_IS_AUX_MODULE :=
 
+# Include any vendor specific clear_vars.mk file
+-include vendor/*/build/core/clear_vars.mk
+
 full_android_manifest :=
 non_system_module :=
 
