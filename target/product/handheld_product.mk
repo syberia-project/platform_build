@@ -27,12 +27,11 @@ PRODUCT_PACKAGES += \
     Camera2 \
     Contacts \
     DeskClock \
+    LatinIME
     Gallery2 \
-    LatinIME \
     Music \
     OneTimeInitializer \
     preinstalled-packages-platform-handheld-product.xml \
-    QuickSearchBox \
     SettingsIntelligence \
     frameworks-base-overlays
 
