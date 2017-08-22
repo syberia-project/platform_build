@@ -181,8 +181,7 @@ all_product_configs := $(call get-product-makefiles,\
     $(SRC_TARGET_DIR)/product/AndroidProducts.mk)
 else
  ifneq ($(SYBERIA_BUILD),)
-    $(call import-products, device/syberia/$(SYBERIA_BUILD)/device.mk)
-    all_product_configs := device/syberia/$(SYBERIA_BUILD)/device.mk
+    all_product_configs := device/*/$(SYBERIA_BUILD)/syberia_gemini.mk
   else
     # Read in all of the product definitions specified by the AndroidProducts.mk
     # files in the tree.
