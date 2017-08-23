@@ -40,6 +40,8 @@ invert_bool = $(if $(strip $(1)),,true)
 $(shell mkdir -p $(dir $(SOONG_VARIABLES)))
 _contents := {$(newline)
 
+include vendor/syberia/build/soong/soong_config.mk
+
 $(call add_json_str,  Make_suffix, -$(TARGET_PRODUCT))
 
 $(call add_json_str,  BuildId,                           $(BUILD_ID))
