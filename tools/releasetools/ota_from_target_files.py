@@ -869,6 +869,15 @@ def CopyInstallTools(output_zip):
       output_zip.write(install_source, install_target)
 
 
+def CopyInstallTools(output_zip):
+  oldcwd = os.getcwd()
+  os.chdir(os.getenv('OUT'))
+  for root, subdirs, files in os.walk("install"):
+    for f in files:
+      p = os.path.join(root, f)
+      output_zip.write(p, p)
+  os.chdir(oldcwd)
+
 def WriteFullOTAPackage(input_zip, output_file):
   target_info = BuildInfo(OPTIONS.info_dict, OPTIONS.oem_dicts)
 
