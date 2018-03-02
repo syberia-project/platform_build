@@ -296,6 +296,10 @@ FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
 
 include vendor/syberia/config/BoardConfigSyberia.mk
 
+# General entries for project pathmap.  Any entries listed here should
+# be device and hardware independent.
+$(call project-set-path-variant,ril,TARGET_RIL_VARIANT,hardware/ril)
+
 # The build system exposes several variables for where to find the kernel
 # headers:
 #   TARGET_DEVICE_KERNEL_HEADERS is automatically created for the current
