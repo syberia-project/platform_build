@@ -89,7 +89,7 @@ endif
 # profiles from the dex metadata files. Note that if a profile is not provided
 # or if it is empty speed-profile is equivalent to (quicken + empty app image).
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    pm.dexopt.install=speed-profile \
+    pm.dexopt.install=quicken \
     pm.dexopt.bg-dexopt=speed \
     pm.dexopt.ab-ota=speed \
     pm.dexopt.inactive=verify \
