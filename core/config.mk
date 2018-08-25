@@ -927,6 +927,9 @@ PLATFORM_SEPOLICY_COMPAT_VERSIONS := \
     PLATFORM_SEPOLICY_VERSION \
     TOT_SEPOLICY_VERSION \
 
+# Rules for QCOM targets
+include vendor/syberia/build/core/qcom_target.mk
+
 # ###############################################################
 # Set up final options.
 # ###############################################################
@@ -1087,9 +1090,3 @@ include $(BUILD_SYSTEM)/soong_config.mk
 endif
 
 include $(BUILD_SYSTEM)/dumpvar.mk
-
-# QCOM targets and pathmap
-ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
-include $(TOPDIR)vendor/syberia/build/core/qcom_target.mk
-include $(TOPDIR)vendor/syberia/build/core/pathmap.mk
-endif
