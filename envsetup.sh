@@ -1667,4 +1667,4 @@ addcompletions
 
 export ANDROID_BUILD_TOP=$(gettop)
 
-. vendor/syberia/build/envsetup.sh
+. $ANDROID_BUILD_TOP/vendor/syberia/build/envsetup.sh
