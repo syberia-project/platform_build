@@ -44,7 +44,6 @@ endif
 # but warn the user.
 ifneq (,$(findstring $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include,$(LOCAL_C_INCLUDES)))
   ifeq (,$(findstring INSTALLED_KERNEL_HEADERS,$(LOCAL_ADDITIONAL_DEPENDENCIES)))
-    $(warning $(LOCAL_MODULE) uses kernel headers, but does not depend on them!)
     LOCAL_ADDITIONAL_DEPENDENCIES += INSTALLED_KERNEL_HEADERS
   endif
 endif
