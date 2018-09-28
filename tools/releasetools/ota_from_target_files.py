@@ -818,15 +818,27 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   # Dump fingerprints
   script.Print("Target: {}".format(target_info.fingerprint))
-
+  #Print ASCII
+  script.Print(" ");
+  script.Print("  #####                                         ");
+  script.Print(" #     # #   # #####  ###### #####  #   ##      ");
+  script.Print(" #        # #  #    # #      #    # #  #  #     ");
+  script.Print("  #####    #   #####  #####  #    # # #    #    ");
+  script.Print("       #   #   #    # #      #####  # ######    ");
+  script.Print(" #     #   #   #    # #      #   #  # #    #    ");
+  script.Print("  #####    #   #####  ###### #    # # #    #    ");
+  script.Print(" ");
+  script.Print(" ");
+  script.Print("                 ANDROID 9.0.0                  ");
+  script.Print(" ")
+  script.AppendExtra("sleep (2);")
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
   device_specific.FullOTA_InstallBegin()
-
   CopyInstallTools(output_zip)
   script.UnpackPackageDir("install", "/tmp/install")
   script.SetPermissionsRecursive("/tmp/install", 0, 0, 0755, 0644, None, None)
   script.SetPermissionsRecursive("/tmp/install/bin", 0, 0, 0755, 0755, None, None)
-
+                                             
   if OPTIONS.backuptool:
     script.Mount("/system")
     script.RunBackup("backup")
