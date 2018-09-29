@@ -820,16 +820,15 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("Target: {}".format(target_info.fingerprint))
   #Print ASCII
   script.Print(" ");
-  script.Print("  #####                                         ");
-  script.Print(" #     # #   # #####  ###### #####  #   ##      ");
-  script.Print(" #        # #  #    # #      #    # #  #  #     ");
-  script.Print("  #####    #   #####  #####  #    # # #    #    ");
-  script.Print("       #   #   #    # #      #####  # ######    ");
-  script.Print(" #     #   #   #    # #      #   #  # #    #    ");
-  script.Print("  #####    #   #####  ###### #    # # #    #    ");
+  script.Print("     _____       __              _          ");
+  script.Print("    / ___/__  __/ /_  ___  _____(_)___ _    ");
+  script.Print("    \__ \/ / / / __ \/ _ \/ ___/ / __ `/    ");
+  script.Print("   ___/ / /_/ / /_/ /  __/ /  / / /_/ /     ");
+  script.Print("  /____/\__, /_.___/\___/_/  /_/\__,_/      ");
+  script.Print("       /____/                               ");
   script.Print(" ");
   script.Print(" ");
-  script.Print("                 ANDROID 9.0.0                  ");
+  script.Print("               ANDROID 9.0.0                ");
   script.Print(" ")
   script.AppendExtra("sleep (2);")
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
