@@ -81,7 +81,7 @@ ifeq (eng,$(TARGET_BUILD_VARIANT))
         pm.dexopt.boot=extract
 else
     PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-        pm.dexopt.first-boot=quicken \
+        pm.dexopt.first-boot=extract \
         pm.dexopt.boot=verify
 endif
 
