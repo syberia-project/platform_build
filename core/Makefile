@@ -3720,7 +3720,7 @@ $(BUILT_OTATOOLS_PACKAGE): zip_root := $(call intermediates-dir-for,PACKAGING,ot
 
 OTATOOLS_DEPS := \
   system/extras/ext4_utils/mke2fs.conf \
-  $(sort $(shell find build/target/product/security -type f -name "*.x509.pem" -o -name "*.pk8" -o \
+  $(sort $(shell find build/make/target/product/security -type f -name "*.x509.pem" -o -name "*.pk8" -o \
       -name verity_key))
 
 ifneq (,$(wildcard device))
