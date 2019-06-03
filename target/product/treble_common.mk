@@ -23,6 +23,9 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
 
+# Enable dynamic partition size
+PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
+
 # Split selinux policy
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 
@@ -57,7 +60,3 @@ PRODUCT_PACKAGES += \
 
 # Support addtional O-MR1 vendor interface
 PRODUCT_EXTRA_VNDK_VERSIONS := 27
-
-# TODO(b/78308559): includes vr_hwc into GSI before vr_hwc move to vendor
-PRODUCT_PACKAGES += \
-    vr_hwc
