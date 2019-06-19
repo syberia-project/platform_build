@@ -288,7 +288,7 @@ ifneq ($(filter cfi,$(my_sanitize)),)
   ifneq ($(filter true,$(my_sdclang) $(my_sdclang2)),)
     SDCLANG_UNKNOWN_FLAGS := -Wl,-plugin-opt,O1
     my_ldflags := $(filter-out $(SDCLANG_UNKNOWN_FLAGS),$(my_ldflags))
-    my_cflags += -fuse-ld=qcld
+    my_cflags += -fuse-ld=qcld, -fno-sanitize=implicit-integer-sign-change
     my_ldflags += -fuse-ld=qcld -Wl,-m,aarch64linux_androideabi
   endif
 endif
