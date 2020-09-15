@@ -1247,6 +1247,12 @@ endif
 # Include any vendor specific config.mk file
 -include $(TOPDIR)vendor/*/build/core/config.mk
 
+ifneq ($(SYBERIA_BUILD),)
+## We need to be sure the global selinux policies are included
+## last, to avoid accidental resetting by device configs
+$(eval include device/syberia/sepolicy/common/sepolicy.mk)
+endif
+
 -include external/linux-kselftest/android/kselftest_test_list.mk
 -include external/ltp/android/ltp_package_list.mk
 DEFAULT_DATA_OUT_MODULES := ltp $(ltp_packages) $(kselftest_modules)
