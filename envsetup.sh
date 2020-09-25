@@ -1669,7 +1669,9 @@ addcompletions
 if [ -z ${CCACHE_EXEC} ]; then
     ccache_path=$(which ccache)
     if [ ! -z "$ccache_path" ]; then
+        export USE_CCACHE=1
         export CCACHE_EXEC="$ccache_path"
+        $ccache_path -o compression=true
         echo "ccache found and CCACHE_EXEC has been set to : $ccache_path"
     else
         echo "ccache not found/installed!"
