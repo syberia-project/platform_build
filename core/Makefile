@@ -5000,7 +5000,7 @@ endif
 	@# OTA install helpers
 ifeq ($(TARGET_PREBUILT_RECOVERY_RAMDISK),)
 	$(hide) $(call package_files-copy-root, \
-	    $(PRODUCT_OUT)/install,$(zip_root)/INSTALL)
+	    $(TARGET_OUT)/install,$(zip_root)/INSTALL)
 endif
 endif
 ifdef INSTALLED_KERNEL_TARGET
