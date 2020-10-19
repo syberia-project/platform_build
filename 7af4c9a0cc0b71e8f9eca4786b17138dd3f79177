@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56e46257_58196286",
+        "filename": "core/combo/TARGET_linux-arm.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-10-19T06:53:21Z",
+      "side": 1,
+      "message": "Kryo385 became kry38?",
+      "revId": "7af4c9a0cc0b71e8f9eca4786b17138dd3f79177",
+      "serverId": "42502b1d-019c-4a7f-8d4c-3cb7dd1b67f8",
+      "unresolved": true
+    }
+  ]
+}
