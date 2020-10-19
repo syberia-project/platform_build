@@ -1235,6 +1235,9 @@ dont_bother_goals := out \
     vbmetaimage-nodeps \
     product-graph dump-products
 
+
+include $(TOPDIR)vendor/*/build/core/config.mk
+
 ifneq ($(SYBERIA_BUILD),)
 ifneq ($(wildcard device/syberia/sepolicy/common/sepolicy.mk),)
 ## We need to be sure the global selinux policies are included
