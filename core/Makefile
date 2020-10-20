@@ -2201,6 +2201,10 @@ ifndef BOARD_RECOVERY_MKBOOTIMG_ARGS
   BOARD_RECOVERY_MKBOOTIMG_ARGS := $(BOARD_MKBOOTIMG_ARGS)
 endif
 
+ifneq ($(TARGET_PREBUILT_RECOVERY_RAMDISK),)
+$(recovery_ramdisk):
+	    cp -rf $(TARGET_PREBUILT_RECOVERY_RAMDISK) $(PRODUCT_OUT)/ramdisk-recovery.img
+else
 $(recovery_ramdisk): $(MKBOOTFS) $(COMPRESSION_COMMAND_DEPS) \
 	    $(INTERNAL_ROOT_FILES) \
 	    $(INSTALLED_RAMDISK_TARGET) \
@@ -2240,6 +2244,7 @@ $(recovery_ramdisk): $(MKBOOTFS) $(COMPRESSION_COMMAND_DEPS) \
 	ln -sf prop.default $(TARGET_RECOVERY_ROOT_OUT)/default.prop
 	$(BOARD_RECOVERY_IMAGE_PREPARE)
 	$(MKBOOTFS) -d $(TARGET_OUT) $(TARGET_RECOVERY_ROOT_OUT) | $(COMPRESSION_COMMAND) > $(recovery_ramdisk)
+endif
 
 # $(1): output file
 # $(2): kernel file
