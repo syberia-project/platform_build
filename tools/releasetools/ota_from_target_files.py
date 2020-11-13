@@ -836,14 +836,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     sysmount = "/system"
 
   if OPTIONS.backuptool:
-    script.RunBackup("backup", sysmount)
-
-  if target_info.get("system_root_image") == "true":
-    sysmount = "/"
-  else:
-    sysmount = "/system"
-
-  if OPTIONS.backuptool:
     script.RunBackup("backup", sysmount, target_info.get('use_dynamic_partitions') == "true")
 
   # All other partitions as well as the data wipe use 10% of the progress, and
@@ -876,10 +868,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
       "boot.img", "boot.img", OPTIONS.input_tmp, "BOOT")
   common.CheckSize(boot_img.data, "boot.img", target_info)
   common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
-
-  if OPTIONS.backuptool:
-    script.ShowProgress(0.02, 10)
-    script.RunBackup("restore", sysmount)
 
   if OPTIONS.backuptool:
     script.ShowProgress(0.02, 10)
