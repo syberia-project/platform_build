@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda11e34_e6700cd2",
+        "filename": "target/product/aosp_product.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2021-06-30T05:09:04Z",
+      "side": 1,
+      "message": "It has nothing to do with sounds. Pls remove.",
+      "revId": "c6a3c63c630fd301d6074812afc05223ea6a8423",
+      "serverId": "42502b1d-019c-4a7f-8d4c-3cb7dd1b67f8"
+    }
+  ]
+}
