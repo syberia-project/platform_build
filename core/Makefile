@@ -2229,20 +2229,19 @@ $(INTERNAL_RECOVERY_RAMDISK_FILES_TIMESTAMP): $(MKBOOTFS) $(COMPRESSION_COMMAND_
 	$(if $(strip $(recovery_wipe)), \
 	  cp -f $(recovery_wipe) $(TARGET_RECOVERY_ROOT_OUT)/system/etc/recovery.wipe)
 	ln -sf prop.default $(TARGET_RECOVERY_ROOT_OUT)/default.prop
-	$(BOARD_RECOVERY_IMAGE_PREPARE)
 ifneq ($(TARGET_PREBUILT_RECOVERY_RAMDISK),)
-	rm -rf $(PRODUCT_OUT)/prebuilt_recovery
-	mkdir -p $(PRODUCT_OUT)/prebuilt_recovery
-	unzip -o $(TARGET_PREBUILT_RECOVERY_RAMDISK) -d $(PRODUCT_OUT)/prebuilt_recovery/
+	# Cleanup recovery ramdisk for extraction
+	rm -rf $(TARGET_RECOVERY_ROOT_OUT)
+	mkdir -p $(TARGET_RECOVERY_ROOT_OUT)
+	# Copy and extract prebuilt recovery cpio
+	$(hide) cp $(TARGET_PREBUILT_RECOVERY_RAMDISK) $(OUT_DIR)/prebuilt_ramdisk-recovery.cpio
+	$(hide) cd $(TARGET_RECOVERY_ROOT_OUT) && cpio -id < $(OUT_DIR)/prebuilt_ramdisk-recovery.cpio && cd -
 endif
+	$(BOARD_RECOVERY_IMAGE_PREPARE)
 	$(hide) touch $@
 
 $(recovery_ramdisk): $(INTERNAL_RECOVERY_RAMDISK_FILES_TIMESTAMP)
-ifneq ($(TARGET_PREBUILT_RECOVERY_RAMDISK),)
-	$(MKBOOTFS) -d $(TARGET_OUT) $(PRODUCT_OUT)/prebuilt_recovery | $(COMPRESSION_COMMAND) > $(recovery_ramdisk)
-else
 	$(MKBOOTFS) -d $(TARGET_OUT) $(TARGET_RECOVERY_ROOT_OUT) | $(COMPRESSION_COMMAND) > $(recovery_ramdisk)
-endif
 
 # $(1): output file
 # $(2): optional kernel file
